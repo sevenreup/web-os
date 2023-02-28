@@ -18,7 +18,7 @@ export default function Home() {
         allowFullScreen
       ></iframe>
       <StyledText text="Serious" textStyle={TextStyles.sliced} />
-      <h1 className="text-lg font-bold text-[#6a161e]">
+      <h1 className="text-lg font-bold text-[#6a161e] text-center p-4">
         I am busy building (probably)... Look at the serious text
       </h1>
     </main>
