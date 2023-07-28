@@ -8,7 +8,8 @@ export default function Home() {
   if (isTabletOrMobile) {
     return (
       <div className="h-[100vh] w-full bg-background text-base flex justify-center items-center text-center p-4">
-        Mobile view not yet implemented, use on a bigger screen or on laptop (Creating an android/IOS view)
+        Mobile view not yet implemented, use on a bigger screen or on laptop
+        (Creating an android/IOS view)
       </div>
     );
   }
