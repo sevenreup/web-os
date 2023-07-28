@@ -5,6 +5,7 @@ import WinMenuBar from "./window/menu_bar";
 import { useOnDrag } from "@/hooks/use-on-drag";
 import { useOnResize } from "@/hooks/use-on-resize";
 import { arePropertiesEquals } from "@/util/object";
+import { settings } from "@/configs/windows";
 
 type Properties = {
   top: number;
@@ -156,7 +157,7 @@ const Win = ({ children }: Props) => {
       className="absolute pointer-events-auto rounded-sm bg-background flex flex-col border border-red-800"
       style={
         fullscreen
-          ? { inset: 5, zIndex }
+          ? { inset: 5, zIndex, marginBottom: settings.taskbarHeight }
           : { top, left, width, height, cursor, zIndex }
       }
       {...useOnResize({
