@@ -1,5 +1,5 @@
 import { minMax, randomOffset } from "@/util/math";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { WindowContext } from "./contexts/win";
 import WinMenuBar from "./window/menu_bar";
 import { useOnDrag } from "@/hooks/use-on-drag";
@@ -23,7 +23,7 @@ const Win = ({ children }: Props) => {
   const { zIndex, focus, close } = useContext(WindowContext);
   const [resizing, setResizing] = useState(false);
   const [{ top, left, width, height, cursor, fullscreen }, setProperties] =
-    useState(() => {
+    useState<Properties>(() => {
       const height = window.innerHeight / 2;
       const width = window.innerWidth / 2.5;
       const randX = randomOffset(window.innerWidth - width, 20);
@@ -116,6 +116,41 @@ const Win = ({ children }: Props) => {
     []
   );
 
+  const toggleFullScreen = useCallback(() => {
+    setProperties((properties) => ({
+      ...properties,
+      fullscreen: !properties.fullscreen,
+    }));
+  }, []);
+
+  // Resize the box when the window size change (reduce it size, and move its position)
+  useEffect(() => {
+    const onWindowResize = () => {
+      setProperties((properties) => {
+        let { top, left, width, height } = properties;
+        if (left + width > window.innerWidth) {
+          width = window.innerWidth - left;
+          if (width < WinMinSize) {
+            left = Math.max(0, left - (WinMinSize - width));
+            width = WinMinSize;
+          }
+        }
+        if (top + height > window.innerHeight) {
+          height = window.innerHeight - top;
+          if (height < WinMinSize) {
+            top = Math.max(0, top - (WinMinSize - height));
+            height = WinMinSize;
+          }
+        }
+        const updated = { ...properties, top, left, width, height };
+        return arePropertiesEquals(properties, updated) ? properties : updated;
+      });
+    };
+
+    window.addEventListener("resize", onWindowResize);
+    return () => window.removeEventListener("resize", onWindowResize);
+  }, []);
+
   return (
     <div
       className="absolute pointer-events-auto rounded-sm bg-background flex flex-col border border-red-800"
@@ -134,10 +169,10 @@ const Win = ({ children }: Props) => {
     >
       <WinMenuBar
         title={"This is a title"}
-        fullscreen={false}
-        onFullScreenClick={function (): void {}}
-        onDoubleClick={function (): void {}}
+        fullscreen={fullscreen}
+        onDoubleClick={toggleFullScreen}
         onCloseClick={close}
+        onFullScreenClick={toggleFullScreen}
         {...useOnDrag({ draggable: !fullscreen && !resizing, onDragMove })}
       />
       {children}
