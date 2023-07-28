@@ -1,4 +1,11 @@
+import { Button } from "@/components/ui/button";
 import React, { MouseEventHandler } from "react";
+import {
+  VscChromeMaximize as MaximizeIcon,
+  VscChromeMinimize as MinimizeIcon,
+  VscChromeRestore as RestoreIcon,
+  VscClose as CloseIcon,
+} from "react-icons/vsc";
 
 type Props = {
   img?: string;
@@ -31,9 +38,22 @@ const WinMenuBar = ({
       </div>
       <div />
       <div className="flex flex-row gap-2">
-        {!fullscreen && <button onClick={onFullScreenClick}>Full</button>}
-        {fullscreen && <button onClick={onFullScreenClick}>Small</button>}
-        <button onClick={onCloseClick}>close</button>
+        <Button onClick={onFullScreenClick} size="icon" variant="ghost">
+          <MinimizeIcon />
+        </Button>
+        {!fullscreen && (
+          <Button onClick={onFullScreenClick} size="icon" variant="ghost">
+            <MaximizeIcon />
+          </Button>
+        )}
+        {fullscreen && (
+          <Button onClick={onFullScreenClick} size="icon" variant="ghost">
+            <RestoreIcon />
+          </Button>
+        )}
+        <Button onClick={onCloseClick} size="icon" variant="ghost">
+          <CloseIcon />
+        </Button>
       </div>
     </div>
   );

@@ -175,7 +175,7 @@ const Win = ({ children }: Props) => {
         onFullScreenClick={toggleFullScreen}
         {...useOnDrag({ draggable: !fullscreen && !resizing, onDragMove })}
       />
-      {children}
+      <div className="relative flex-grow-[1]">{children}</div>
     </div>
   );
 };
