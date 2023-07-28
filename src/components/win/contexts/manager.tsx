@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
 export type WindowManagerContextType = {
-  openNewWindow: () => void;
+  openNewWindow: (data: ShortcutData) => void;
 };
 
 export const WinManagerContext = createContext<WindowManagerContextType>({
-  openNewWindow: () => {},
+  openNewWindow: (data: ShortcutData) => {},
 });
 
 export const WinManagerProvider = WinManagerContext.Provider;

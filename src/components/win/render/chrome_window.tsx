@@ -1,10 +1,16 @@
 import React from "react";
 import Win from "../window";
 
-type Props = {};
+type Props = {
+  data: WindowData;
+};
 
-const ChromeWindow = (props: Props) => {
-  return <Win>ChromeWindow</Win>;
+const ChromeWindow = ({ data }: Props) => {
+  return (
+    <Win title={data.title} img={data.icon}>
+      ChromeWindow
+    </Win>
+  );
 };
 
 export default ChromeWindow;

@@ -2,20 +2,23 @@
 
 import React, { useContext } from "react";
 import { WinManagerContext } from "../win/contexts/manager";
+import { Button } from "../ui/button";
 
-type Props = {};
+type Props = {
+  data: ShortcutData;
+};
 
-const AppIcon = (props: Props) => {
+const AppIcon = ({ data }: Props) => {
   const { openNewWindow } = useContext(WinManagerContext);
 
   return (
-    <button
+    <Button
       onClick={() => {
-        openNewWindow();
+        openNewWindow(data);
       }}
     >
-      Open window
-    </button>
+      {data.title}
+    </Button>
   );
 };
 

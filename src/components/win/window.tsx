@@ -16,11 +16,14 @@ type Properties = {
   fullscreen: boolean;
 };
 
-type Props = {} & React.PropsWithChildren<{}>;
+type Props = {
+  title: string;
+  img?: string;
+} & React.PropsWithChildren<{}>;
 
 const WinMinSize = 250;
 
-const Win = ({ children }: Props) => {
+const Win = ({ children, title, img }: Props) => {
   const { zIndex, focus, close } = useContext(WindowContext);
   const [resizing, setResizing] = useState(false);
   const [{ top, left, width, height, cursor, fullscreen }, setProperties] =
@@ -169,7 +172,8 @@ const Win = ({ children }: Props) => {
       })}
     >
       <WinMenuBar
-        title={"This is a title"}
+        title={title}
+        img={img}
         fullscreen={fullscreen}
         onDoubleClick={toggleFullScreen}
         onCloseClick={close}

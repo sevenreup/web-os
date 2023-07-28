@@ -15,8 +15,8 @@ import {
 
 type Props = {} & PropsWithChildren<{}>;
 
-const genericRenderer = () => {
-  return <ChromeWindow />;
+const genericRenderer = (data: WindowData) => {
+  return <ChromeWindow data={data} />;
 };
 
 export const WindowManager = ({ children }: Props) => {
@@ -24,12 +24,15 @@ export const WindowManager = ({ children }: Props) => {
   const winManagerContextValue = useMemo(
     () =>
       ({
-        openNewWindow: () => {
+        openNewWindow: (data) => {
           console.log("openNewWindow");
           setDescriptors((descriptors) => {
             return descriptors.concat({
               id: Math.random().toString(),
               zIndex: 0,
+              payload: {
+                title: data.title,
+              },
             });
           });
         },
@@ -71,7 +74,7 @@ type WindowWrapperProps = {
   descriptor: IDescriptor;
   close: (id: string) => void;
   focus: (id: string) => void;
-  render: () => React.ReactNode;
+  render: (data: WindowData) => React.ReactNode;
 };
 
 const WindowWrapper = ({
@@ -92,7 +95,7 @@ const WindowWrapper = ({
 
   return (
     <WindowProvider key={descriptor.id} value={contextValue}>
-      {render()}
+      {render(descriptor.payload)}
     </WindowProvider>
   );
 };
