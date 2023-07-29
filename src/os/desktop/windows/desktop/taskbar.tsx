@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import AppIcon from "../icon";
+import AppIcon from "../../../../components/icon";
 import { settings } from "@/configs/windows";
 
 type Props = {};

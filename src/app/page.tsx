@@ -1,5 +1,5 @@
 "use client";
-import Taskbar from "@/components/desktop/taskbar";
+import Taskbar from "@/os/desktop/windows/desktop/taskbar";
 import { useMediaQuery } from "react-responsive";
 
 export default function Home() {
