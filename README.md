@@ -3,7 +3,7 @@ This is an OS like personal website.
 
 On mobile you will see either ios or android and on desktop you will windows or mac.
 
-## Features
+## Features (Desktop)
 - [ ] Windows management
 - [ ] Taskbar
 - [ ] Desktop
@@ -12,6 +12,8 @@ On mobile you will see either ios or android and on desktop you will windows or 
 - [ ] Browser
 - [ ] Apps
 
+## Features (Mobile)
+Coming soon...
 
 ## Development
 
