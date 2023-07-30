@@ -1,3 +1,3 @@
 export const settings = {
-    taskbarHeight: 40,
+    taskbarHeight: 48,
 }

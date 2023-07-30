@@ -20,7 +20,7 @@ const Taskbar = (props: Props) => {
   return (
     <div
       className={cn(
-        "fixed bottom-0 w-full bg-green-400",
+        "fixed bottom-0 w-full bg-[#091418] text-white",
         "flex justify-between p-4"
       )}
       style={{
@@ -51,22 +51,22 @@ const Taskbar = (props: Props) => {
         <AppIcon
           data={{
             title: "Chrome",
-            icon: "https://www.google.com/chrome/static/images/chrome-logo.svg?cache=72f5d9c",
-            target: "https://www.google.com/chrome/",
+            icon: "/icons/user/chrome-logo.svg",
+            target: "apps/user/chrome",
           }}
         />
         <AppIcon
           data={{
             title: "Settings",
-            icon: "https://www.google.com/chrome/static/images/chrome-logo.svg?cache=72f5d9c",
-            target: "https://www.google.com/chrome/",
+            icon: "/icons/system/settings.png",
+            target: "apps/system/settings",
           }}
         />
         <AppIcon
           data={{
             title: "Figma",
-            icon: "https://www.google.com/chrome/static/images/chrome-logo.svg?cache=72f5d9c",
-            target: "https://www.google.com/chrome/",
+            icon: "/icons/user/figma.png",
+            target: "apps/user/figma",
           }}
         />
       </div>

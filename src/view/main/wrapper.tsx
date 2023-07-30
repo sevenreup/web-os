@@ -1,5 +1,6 @@
 "use client";
 
+import SystemManager from "@/os/desktop/core/os";
 import { WindowManager } from "@/os/desktop/core/win";
 import React, { PropsWithChildren } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -13,7 +14,11 @@ const MainWrapper = ({ children }: Props) => {
     return <div>{children}</div>;
   }
 
-  return <WindowManager>{children}</WindowManager>;
+  return (
+    <SystemManager>
+      <WindowManager>{children}</WindowManager>
+    </SystemManager>
+  );
 };
 
 export default MainWrapper;

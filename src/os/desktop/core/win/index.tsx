@@ -37,9 +37,7 @@ export const WindowManager = ({ children }: Props) => {
               id: Math.random().toString(),
               zIndex: 0,
               ...options,
-              payload: {
-                title: data.title,
-              },
+              payload: data,
             });
           });
         },

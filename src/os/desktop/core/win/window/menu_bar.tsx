@@ -6,6 +6,7 @@ import {
   VscChromeRestore as RestoreIcon,
   VscClose as CloseIcon,
 } from "react-icons/vsc";
+import Image from "next/image";
 
 type Props = {
   img?: string;
@@ -32,8 +33,10 @@ const WinMenuBar = ({
       onMouseDown={onMouseDown}
       className="flex flex-row items-center justify-between p-2 bg-gray-800 text-white"
     >
-      <div>
-        {Boolean(img) && <img src={img} alt={title} />}
+      <div className="flex flex-row gap-2 items-center">
+        {Boolean(img) && (
+          <Image src={img ?? ""} alt={title} height={20} width={20} />
+        )}
         <h1 className="whitespace-nowrap">{title}</h1>
       </div>
       <div />
