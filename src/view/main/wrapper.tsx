@@ -1,6 +1,6 @@
 "use client";
 
-import { WindowManager } from "@/components/win";
+import { WindowManager } from "@/os/desktop/core/win";
 import React, { PropsWithChildren } from "react";
 import { useMediaQuery } from "react-responsive";
 

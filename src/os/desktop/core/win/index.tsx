@@ -12,10 +12,11 @@ import {
   focusedDescriptor,
   removeOneAndSetDescriptors,
 } from "./util/descriptors";
+import { WinOptions } from "@/models/window";
 
 type Props = {} & PropsWithChildren<{}>;
 
-const genericRenderer = (data: WindowData) => {
+const genericRenderer = (data: ShortcutData) => {
   return <ChromeWindow data={data} />;
 };
 
@@ -24,12 +25,18 @@ export const WindowManager = ({ children }: Props) => {
   const winManagerContextValue = useMemo(
     () =>
       ({
-        openNewWindow: (data) => {
-          console.log("openNewWindow");
+        openNewWindow: (data, { equals, ...options }: WinOptions = {}) => {
+          const existing = equals
+            ? descriptors.find((descriptor) => equals(data, descriptor.payload))
+            : undefined;
+          if (existing) {
+            return focusedDescriptor(descriptors, existing.id);
+          }
           setDescriptors((descriptors) => {
             return descriptors.concat({
               id: Math.random().toString(),
               zIndex: 0,
+              ...options,
               payload: {
                 title: data.title,
               },
@@ -74,7 +81,7 @@ type WindowWrapperProps = {
   descriptor: IDescriptor;
   close: (id: string) => void;
   focus: (id: string) => void;
-  render: (data: WindowData) => React.ReactNode;
+  render: (data: ShortcutData) => React.ReactNode;
 };
 
 const WindowWrapper = ({

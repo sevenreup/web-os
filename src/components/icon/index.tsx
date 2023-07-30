@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useContext } from "react";
-import { WinManagerContext } from "../win/contexts/manager";
 import { Button } from "../ui/button";
+import { WinManagerContext } from "@/os/desktop/core/win/contexts/manager";
 
 type Props = {
   data: ShortcutData;
