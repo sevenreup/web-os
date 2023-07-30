@@ -101,6 +101,7 @@ export function getMaxZIndex(descriptors: IDescriptor[]): number {
  */
 export function focusedDescriptor(descriptors: IDescriptor[], id: string) {
   const focused = getFocusedDescriptor(descriptors);
+
   if (focused.id === id) {
     return descriptors;
   }

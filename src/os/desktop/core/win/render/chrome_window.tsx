@@ -7,8 +7,6 @@ type Props = {
 };
 
 const ChromeWindow = ({ data }: Props) => {
-  console.log(data);
-
   const app = useFindApp(data);
 
   return (

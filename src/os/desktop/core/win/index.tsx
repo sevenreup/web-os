@@ -10,9 +10,11 @@ import { WindowContextType, WindowProvider } from "./contexts/win";
 import ChromeWindow from "./render/chrome_window";
 import {
   focusedDescriptor,
+  getMaxZIndex,
   removeOneAndSetDescriptors,
 } from "./util/descriptors";
 import { WinOptions } from "@/models/window";
+import { useSystemManager } from "../os/hooks";
 
 type Props = {} & PropsWithChildren<{}>;
 
@@ -22,27 +24,41 @@ const genericRenderer = (data: ShortcutData) => {
 
 export const WindowManager = ({ children }: Props) => {
   const [descriptors, setDescriptors] = useState<IDescriptor[]>([]);
+  const { findApp } = useSystemManager();
+
   const winManagerContextValue = useMemo(
     () =>
       ({
         openNewWindow: (data, { equals, ...options }: WinOptions = {}) => {
-          const existing = equals
-            ? descriptors.find((descriptor) => equals(data, descriptor.payload))
-            : undefined;
-          if (existing) {
-            return focusedDescriptor(descriptors, existing.id);
+          const app = findApp(data.target);
+          let shouldFocus: IDescriptor | undefined = undefined;
+          if (app != undefined) {
+            const hasMulti = app.options?.multiInstance ?? true;
+
+            if (!hasMulti) {
+              shouldFocus = descriptors.find(
+                (descriptor) => descriptor.payload.target === data.target
+              );
+            }
           }
-          setDescriptors((descriptors) => {
-            return descriptors.concat({
-              id: Math.random().toString(),
-              zIndex: 0,
-              ...options,
-              payload: data,
+
+          if (shouldFocus) {
+            return setDescriptors(
+              focusedDescriptor(descriptors, shouldFocus.id)
+            );
+          } else {
+            setDescriptors((descriptors) => {
+              return descriptors.concat({
+                id: Math.random().toString(),
+                zIndex: getMaxZIndex(descriptors),
+                ...options,
+                payload: data,
+              });
             });
-          });
+          }
         },
       } as WindowManagerContextType),
-    []
+    [descriptors, findApp]
   );
 
   const windowHandlers: Omit<WindowWrapperProps, "descriptor" | "render"> =

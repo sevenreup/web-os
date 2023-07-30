@@ -12,3 +12,8 @@ export const useFindApp = (shortcut: ShortcutData): App | undefined => {
     return systemApps.get(app);
   }
 };
+
+export const useSystemManager = () => {
+  const value = useContext(SystemManagerContext);
+  return value;
+};

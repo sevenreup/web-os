@@ -19,6 +19,9 @@ const systemApps = new Map<string, App>([
       title: "Settings",
       icon: "settings",
       render: () => <div>Settings</div>,
+      options: {
+        multiInstance: false,
+      },
     } as App,
   ],
 ]);
@@ -47,6 +50,15 @@ const SystemManager = ({ children }: Props) => {
     () => ({
       systemApps: systemApps,
       userApps: userApps,
+      findApp: (target: string) => {
+        if (target.includes("apps/user/")) {
+          const app = target.split("apps/user/")[1];
+          return userApps.get(app);
+        } else {
+          const app = target.split("apps/system/")[1];
+          return systemApps.get(app);
+        }
+      },
     }),
     []
   );
