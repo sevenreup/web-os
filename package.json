@@ -27,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-responsive": "^9.0.2",
+    "react-spring-bottom-sheet": "^3.4.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.6",
