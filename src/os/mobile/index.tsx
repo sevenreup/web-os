@@ -4,10 +4,10 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { SiGooglelens as GoogleLensIcon } from "react-icons/si";
 import { BiSolidMicrophone as MicrophoneIcon } from "react-icons/bi";
 import { BottomSheet } from "react-spring-bottom-sheet";
-import "react-spring-bottom-sheet/dist/style.css";
 import { AndroidIcon } from "./android/components/icons";
 import { cn } from "@/lib/utils";
 import SwipeDetector from "./core/swipe";
+import DesktopGrid from "./core/grid";
 
 type Props = {};
 
@@ -29,16 +29,14 @@ export const Homescreen = (props: Props) => {
       >
         <div
           className={cn(
-            "h-[100vh] w-full bg-background text-base flex flex-col justify-center items-center text-center p-4",
-            "grid grid-rows-6 grid-flow-col gap-4",
+            "h-[100vh] w-full bg-background text-base justify-center items-center text-center p-4",
+            "flex flex-col",
             "bg-center bg-cover bg-[url(https://images.frandroid.com/wp-content/uploads/2019/12/windows-10-wallpaper.jpg)]"
           )}
         >
-          <div>
-            <button onClick={() => setOpen(true)}>Open</button>
-          </div>
-          <div className="flex flex-col gap-2 justify-end items-end h-full row-start-6">
-            <div className="flex flex-row w-full justify-between">
+          <DesktopGrid className="w-full h-full" />
+          <div className="flex flex-col gap-4 justify-end items-end p-2">
+            <div className="flex flex-row gap-2 w-full justify-between">
               {["google", "chrome", "photos", "whatsapp", "camera"].map(
                 (item) => {
                   return <AndroidIcon key={item} appId={item} />;

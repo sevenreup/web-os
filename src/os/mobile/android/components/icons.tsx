@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   BsGoogle as GoogleIcon,
   BsAndroid2 as AndroidDefIcon,
@@ -18,27 +17,27 @@ export const AndroidIcon = ({ icon, appId }: Props) => {
   return (
     <button
       className={cn(
-        "h-12 w-12 flex justify-center items-center rounded-full",
+        "h-16 w-16 flex justify-center items-center rounded-full",
         "bg-gray-500 text-white"
       )}
     >
-      {getIconForApp(appId)}
+      {React.createElement(getIconForApp(appId), { className: "h-8 w-8" })}
     </button>
   );
 };
 
-const getIconForApp = (appId: string): ReactNode => {
+const getIconForApp = (appId: string): any => {
   if (appId == "google") {
-    return <GoogleIcon />;
+    return GoogleIcon;
   } else if (appId == "whatsapp") {
-    return <WhatsappIcon />;
+    return WhatsappIcon;
   } else if (appId == "camera") {
-    return <CameraIcon />;
+    return CameraIcon;
   } else if (appId == "chrome") {
-    return <ChromeIcon />;
+    return ChromeIcon;
   } else if (appId == "photos") {
-    return <GooglePhotosIcon />;
+    return GooglePhotosIcon;
   } else {
-    return <AndroidDefIcon />;
+    return AndroidDefIcon;
   }
 };
