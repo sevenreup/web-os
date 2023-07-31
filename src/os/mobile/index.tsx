@@ -4,21 +4,29 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { SiGooglelens as GoogleLensIcon } from "react-icons/si";
 import { BiSolidMicrophone as MicrophoneIcon } from "react-icons/bi";
 import { BottomSheet } from "react-spring-bottom-sheet";
-
-type Props = {};
-
 import "react-spring-bottom-sheet/dist/style.css";
 import { AndroidIcon } from "./android/components/icons";
 import { cn } from "@/lib/utils";
+import SwipeDetector from "./core/swipe";
+
+type Props = {};
 
 export const Homescreen = (props: Props) => {
   const [open, setOpen] = useState(false);
+
   function onDismiss() {
     setOpen(false);
   }
+
   return (
     <>
-      <main className="m-0 p-0 overflow-y-hidden">
+      <SwipeDetector
+        className="m-0 p-0 overflow-y-hidden touch-none"
+        onSwipeDown={() => {}}
+        onSwipeUp={() => {
+          setOpen(true);
+        }}
+      >
         <div
           className={cn(
             "h-[100vh] w-full bg-background text-base flex flex-col justify-center items-center text-center p-4",
@@ -40,7 +48,7 @@ export const Homescreen = (props: Props) => {
             <SearchBar />
           </div>
         </div>
-      </main>
+      </SwipeDetector>
 
       <BottomSheet open={open} onDismiss={onDismiss}>
         Cool drawer here
