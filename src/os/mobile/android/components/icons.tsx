@@ -10,19 +10,23 @@ import {
 import { TbBrandGooglePhotos as GooglePhotosIcon } from "react-icons/tb";
 type Props = {
   icon?: string;
+  title?: string;
   appId: string;
 };
 
-export const AndroidIcon = ({ icon, appId }: Props) => {
+export const AndroidIcon = ({ icon, title, appId }: Props) => {
   return (
-    <button
-      className={cn(
-        "h-16 w-16 flex justify-center items-center rounded-full",
-        "bg-gray-500 text-white"
-      )}
-    >
-      {React.createElement(getIconForApp(appId), { className: "h-8 w-8" })}
-    </button>
+    <div>
+      <button
+        className={cn(
+          "h-16 w-16 flex justify-center items-center rounded-full",
+          "bg-gray-500 text-white"
+        )}
+      >
+        {React.createElement(getIconForApp(appId), { className: "h-8 w-8" })}
+      </button>
+      {title && <span className="text-xs font-semibold">{title}</span>}
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { SiGooglelens as GoogleLensIcon } from "react-icons/si";
 import { BiSolidMicrophone as MicrophoneIcon } from "react-icons/bi";
 import { BottomSheet } from "react-spring-bottom-sheet";
+import "react-spring-bottom-sheet/dist/style.css";
 import { AndroidIcon } from "./android/components/icons";
 import { cn } from "@/lib/utils";
 import SwipeDetector from "./core/swipe";
