@@ -1,3 +1,4 @@
+import { StartMenuGroups } from "@/models/shortcut";
 import { createContext } from "react";
 
 export type DesktopContextType = {
@@ -7,6 +8,7 @@ export type DesktopContextType = {
     closeStartMenu: () => void;
     toggleStartMenu: () => void;
     toggleNotificationCenter: () => void;
+    getStartMenuGroups: () => StartMenuGroups;
   };
 };
 
@@ -17,6 +19,7 @@ export const DesktopContext = createContext<DesktopContextType>({
     closeStartMenu: () => {},
     toggleStartMenu: () => {},
     toggleNotificationCenter: () => {},
+    getStartMenuGroups: () => [],
   },
 });
 

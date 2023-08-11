@@ -5,18 +5,19 @@ import { Button } from "../ui/button";
 import { WinManagerContext } from "@/os/desktop/core/win/contexts/manager";
 import Image from "next/image";
 import { ShortcutData } from "@/models/shortcut";
+import { useOpenApp } from "@/os/desktop/core/win/util/hooks";
 
 type Props = {
   data: ShortcutData;
 };
 
 const AppIcon = ({ data }: Props) => {
-  const { openNewWindow } = useContext(WinManagerContext);
+  const { open } = useOpenApp(data);
   const appUrl = data.icon ? "/img/icon/" + data.icon : "";
   return (
     <Button
       onClick={() => {
-        openNewWindow(data);
+        open();
       }}
       variant="ghost"
     >

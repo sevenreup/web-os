@@ -1,4 +1,4 @@
-import { ShortcutData } from "@/models/shortcut";
+import { ShortcutData, StartMenuGroups } from "@/models/shortcut";
 import { ReactNode } from "react";
 
 export interface App {
@@ -9,8 +9,12 @@ export interface App {
   };
 }
 
-
 export interface AppAndData {
   app: App;
   data: ShortcutData;
 }
+
+export type WinStartMenuGroups = {
+  recent: ShortcutData[];
+  pinned: ShortcutData[];
+} & StartMenuGroups;

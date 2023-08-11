@@ -47,7 +47,7 @@ const Taskbar = (props: Props) => {
             }}
             className="w-[600px] h-[min(100%-24px,720px)] mx-4 my-2 p-0 border-0 window-bg"
           >
-            <StartMenu />
+            <StartMenu close={closeStartMenu}/>
           </PopoverContent>
         </Popover>
         {getTaskbarApps().map((app) => (
