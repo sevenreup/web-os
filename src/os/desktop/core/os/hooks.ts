@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import { SystemManagerContext } from "./context";
-import { App } from "../models/app";
+import { AppAndData } from "../models/app";
+import { ShortcutData } from "@/models/shortcut";
 
-export const useFindApp = (shortcut: ShortcutData): App | undefined => {
-  const { systemApps, userApps } = useContext(SystemManagerContext);
-  if (shortcut.target.includes("apps/user/")) {
-    const app = shortcut.target.split("apps/user/")[1];
-    return userApps.get(app);
-  } else {
-    const app = shortcut.target.split("apps/system/")[1];
-    return systemApps.get(app);
+export const useFindApp = (shortcut: ShortcutData): AppAndData | undefined => {
+  const { apps } = useContext(SystemManagerContext);
+  var app = apps.find((app) => app.id === shortcut.payload);
+  if (app) {
+    return {
+      app,
+      data: shortcut,
+    };
   }
 };
 

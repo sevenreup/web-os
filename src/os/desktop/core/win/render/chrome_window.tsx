@@ -1,17 +1,18 @@
 import React from "react";
 import Win from "../window";
 import { useFindApp } from "../../os/hooks";
+import { ShortcutData } from "@/models/shortcut";
 
 type Props = {
   data: ShortcutData;
 };
 
 const ChromeWindow = ({ data }: Props) => {
-  const app = useFindApp(data);
+  const instance = useFindApp(data);
 
   return (
-    <Win title={data.title} img={data.icon}>
-      {app == undefined ? <AppNotFound /> : app.render()}
+    <Win title={data.name} img={"/img/icon/" + data.icon}>
+      {instance == undefined ? <AppNotFound /> : instance?.app.render()}
     </Win>
   );
 };

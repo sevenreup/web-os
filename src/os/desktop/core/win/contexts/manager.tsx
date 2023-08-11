@@ -1,3 +1,4 @@
+import { ShortcutData } from "@/models/shortcut";
 import { WinOptions } from "@/models/window";
 import { createContext } from "react";
 

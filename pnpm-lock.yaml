@@ -5,6 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@dnd-kit/core':
+    specifier: ^6.0.8
+    version: 6.0.8(react-dom@18.2.0)(react@18.2.0)
+  '@dnd-kit/utilities':
+    specifier: ^3.2.1
+    version: 3.2.1(react@18.2.0)
+  '@radix-ui/react-avatar':
+    specifier: ^1.0.3
+    version: 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-icons':
     specifier: ^1.3.0
     version: 1.3.0(react@18.2.0)
@@ -95,6 +104,37 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
+
+  /@dnd-kit/accessibility@3.0.1(react@18.2.0):
+    resolution: {integrity: sha512-HXRrwS9YUYQO9lFRc/49uO/VICbM+O+ZRpFDe9Pd1rwVv2PCNkRiTZRdxrDgng/UkvdC3Re9r2vwPpXXrWeFzg==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      tslib: 2.6.1
+    dev: false
+
+  /@dnd-kit/core@6.0.8(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-lYaoP8yHTQSLlZe6Rr9qogouGUz9oRUj4AHhDQGQzq/hqaJRpFo65X+JKsdHf8oUFBzx5A+SJPUvxAwTF2OabA==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@dnd-kit/accessibility': 3.0.1(react@18.2.0)
+      '@dnd-kit/utilities': 3.2.1(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.1
+    dev: false
+
+  /@dnd-kit/utilities@3.2.1(react@18.2.0):
+    resolution: {integrity: sha512-OOXqISfvBw/1REtkSK2N3Fi2EQiLMlWUlqnOK/UpOISqBZPWpE6TqL+jcPtMOkE8TqYGiURvRdPSI9hltNUjEA==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      tslib: 2.6.1
     dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.45.0):
@@ -365,6 +405,30 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.6
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
+      '@types/react': 18.2.17
+      '@types/react-dom': 18.2.7
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@radix-ui/react-avatar@1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9ToF7YNex3Ste45LrAeTlKtONI9yVRt/zOS158iilIkW5K/Apeyb/TUQlcEFTEFvWr8Kzdi2ZYrm1/suiXPajQ==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.6
+      '@radix-ui/react-context': 1.0.1(@types/react@18.2.17)(react@18.2.0)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.17)(react@18.2.0)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.17)(react@18.2.0)
       '@types/react': 18.2.17
       '@types/react-dom': 18.2.7
       react: 18.2.0

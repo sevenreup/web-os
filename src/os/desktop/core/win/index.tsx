@@ -15,6 +15,7 @@ import {
 } from "./util/descriptors";
 import { WinOptions } from "@/models/window";
 import { useSystemManager } from "../os/hooks";
+import { ShortcutData } from "@/models/shortcut";
 
 type Props = {} & PropsWithChildren<{}>;
 
@@ -30,14 +31,14 @@ export const WindowManager = ({ children }: Props) => {
     () =>
       ({
         openNewWindow: (data, { equals, ...options }: WinOptions = {}) => {
-          const app = findApp(data.target);
+          const app = findApp(data.payload ?? "");
           let shouldFocus: IDescriptor | undefined = undefined;
           if (app != undefined) {
             const hasMulti = app.options?.multiInstance ?? true;
 
             if (!hasMulti) {
               shouldFocus = descriptors.find(
-                (descriptor) => descriptor.payload.target === data.target
+                (descriptor) => descriptor.payload.target === data.payload
               );
             }
           }

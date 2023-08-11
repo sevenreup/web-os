@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SiWindows11 as WindowsIcon } from "react-icons/si";
 import StartMenu from "./start-menu";
+import { getTaskbarApps } from "../../util/apps";
 
 type Props = {};
 
@@ -44,31 +45,14 @@ const Taskbar = (props: Props) => {
             onPointerDownOutside={() => {
               closeStartMenu();
             }}
+            className="w-[600px] h-[min(100%-24px,720px)] mx-4 my-2 p-0 border-0 window-bg"
           >
             <StartMenu />
           </PopoverContent>
         </Popover>
-        <AppIcon
-          data={{
-            title: "Chrome",
-            icon: "/icons/user/chrome-logo.svg",
-            target: "apps/user/chrome",
-          }}
-        />
-        <AppIcon
-          data={{
-            title: "Settings",
-            icon: "/icons/system/settings.png",
-            target: "apps/system/settings",
-          }}
-        />
-        <AppIcon
-          data={{
-            title: "Figma",
-            icon: "/icons/user/figma.png",
-            target: "apps/user/figma",
-          }}
-        />
+        {getTaskbarApps().map((app) => (
+          <AppIcon key={app.name} data={app} />
+        ))}
       </div>
       <div>second</div>
     </div>
