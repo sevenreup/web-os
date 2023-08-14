@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, use, useMemo, useState } from "react";
 import { DesktopContextType, DesktopProvider } from "./context";
-import { getStartApps } from "../../windows/util/apps";
+import { getDesktopApps, getStartApps } from "../../windows/util/apps";
 
 type Props = {} & PropsWithChildren<{}>;
 
@@ -23,6 +23,10 @@ export const DesktopWrapper = ({ children }: Props) => {
         toggleNotificationCenter: () => {},
         getStartMenuGroups: () => {
           const apps = getStartApps();
+          return apps;
+        },
+        getDesktopApps: () => {
+          const apps = getDesktopApps();
           return apps;
         },
       },

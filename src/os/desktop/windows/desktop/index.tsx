@@ -1,10 +1,13 @@
 import { settings } from "@/configs/windows";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { useDesktopApps } from "../../core/desktop/hooks";
+import { DesktopIcon } from "@/components/icon";
 
 type Props = {};
 
 export const Desktop = (props: Props) => {
+  const apps = useDesktopApps();
   return (
     <div
       className={cn(
@@ -22,17 +25,8 @@ export const Desktop = (props: Props) => {
           contain: "strict",
         }}
       >
-        {[...Array(10)].map((i) => (
-          <div key={i} className="p-1 relative w-full" draggable={true}>
-            <button className="flex flex-col relative">
-              <img
-                src="https://images.frandroid.com/wp-content/uploads/2019/12/windows-10-wallpaper.jpg"
-                alt=""
-                className="w-full h-12 object-cover"
-              />
-              <span className="w-full">Game Boy</span>
-            </button>
-          </div>
+        {apps.map((app) => (
+          <DesktopIcon key={app.name} data={app} />
         ))}
       </div>
       {/* <div

@@ -26,4 +26,23 @@ const AppIcon = ({ data }: Props) => {
   );
 };
 
+export const DesktopIcon = ({ data }: Props) => {
+  const { open } = useOpenApp(data);
+  const appUrl = data.icon ? "/img/icon/" + data.icon : "";
+  return (
+    <button
+      className="p-1 relative w-full "
+      draggable={true}
+      onClick={() => {
+        open();
+      }}
+    >
+      <button className="flex flex-col relative justify-center items-center">
+        <img src={appUrl} alt="" className="w-9 object-cover" />
+        <span className="w-full">{data.name}</span>
+      </button>
+    </button>
+  );
+};
+
 export default AppIcon;

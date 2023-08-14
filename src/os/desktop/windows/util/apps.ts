@@ -12,6 +12,18 @@ export const getTaskbarApps = (): WinApp[] => {
   return allApps.filter((app) => ids.includes(app.payload ?? ""));
 };
 
+export const getDesktopApps = (): WinApp[] => {
+  const ids = localStorage.getItem("desktop")
+    ? (JSON.parse(localStorage.getItem("desktop") as "") as string[])
+    : [
+        "apps/system/settings",
+        "apps/system/taskmanager",
+        "apps/system/explorer",
+        "apps/user/chrome",
+      ];
+  return allApps.filter((app) => ids.includes(app.payload ?? ""));
+};
+
 export const getStartApps = () => {
   const pinned = localStorage.getItem("pinned")
     ? (JSON.parse(localStorage.getItem("pinned") as "") as string[])

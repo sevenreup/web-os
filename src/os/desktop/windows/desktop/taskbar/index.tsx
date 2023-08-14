@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, {  } from "react";
 import AppIcon from "../../../../../components/icon";
 import { settings } from "@/configs/windows";
 import { useTaskbar } from "../../../core/desktop/hooks";
@@ -12,12 +12,13 @@ import { Button } from "@/components/ui/button";
 import { SiWindows11 as WindowsIcon } from "react-icons/si";
 import StartMenu from "./start-menu";
 import { getTaskbarApps } from "../../util/apps";
+import { SystemCenter } from "./system-center";
 
 type Props = {};
 
 const Taskbar = (props: Props) => {
   const { toggleStartMenu, closeStartMenu, startMenuOpen } = useTaskbar();
-
+  
   return (
     <div
       className={cn(
@@ -47,14 +48,14 @@ const Taskbar = (props: Props) => {
             }}
             className="w-[600px] h-[min(100%-24px,720px)] mx-4 my-2 p-0 border-0 window-bg"
           >
-            <StartMenu close={closeStartMenu}/>
+            <StartMenu close={closeStartMenu} />
           </PopoverContent>
         </Popover>
         {getTaskbarApps().map((app) => (
           <AppIcon key={app.name} data={app} />
         ))}
       </div>
-      <div>second</div>
+      <SystemCenter />
     </div>
   );
 };
