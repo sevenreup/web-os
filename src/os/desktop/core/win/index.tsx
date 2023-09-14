@@ -38,7 +38,7 @@ export const WindowManager = ({ children }: Props) => {
 
             if (!hasMulti) {
               shouldFocus = descriptors.find(
-                (descriptor) => descriptor.payload.target === data.payload
+                (descriptor) => descriptor.payload.payload === data.payload
               );
             }
           }

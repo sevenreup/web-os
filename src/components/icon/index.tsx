@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useContext } from "react";
+import React from "react";
 import { Button } from "../ui/button";
-import { WinManagerContext } from "@/os/desktop/core/win/contexts/manager";
 import Image from "next/image";
 import { ShortcutData } from "@/models/shortcut";
 import { useOpenApp } from "@/os/desktop/core/win/util/hooks";

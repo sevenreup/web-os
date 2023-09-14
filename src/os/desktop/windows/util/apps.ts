@@ -1,3 +1,5 @@
+'use client';
+
 import { WinApp, allApps } from "../config/apps";
 
 export const getTaskbarApps = (): WinApp[] => {

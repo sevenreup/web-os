@@ -1,3 +1,5 @@
+"use client";
+
 import React, { PropsWithChildren, use, useMemo, useState } from "react";
 import { DesktopContextType, DesktopProvider } from "./context";
 import { getDesktopApps, getStartApps } from "../../windows/util/apps";

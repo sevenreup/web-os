@@ -1,3 +1,5 @@
+'use client';
+
 import { settings } from "@/configs/windows";
 import { cn } from "@/lib/utils";
 import React from "react";

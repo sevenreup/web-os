@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
+'use client';
+
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useState } from "react";
 import { FaChevronUp as UpIcon } from "react-icons/fa";
