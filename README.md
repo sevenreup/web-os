@@ -1,5 +1,5 @@
 ## Welcome
-This is an OS like personal website.
+This is an OS like website.
 
 On mobile you will see either ios or android and on desktop you will windows or mac.
 
